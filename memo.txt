@@ -1,0 +1,18 @@
+NotebookList 単語帳一覧
+NotebookDetail　ノート詳細
+WordCard 単語カード
+
+App.jsx　★全部のまとめ役
+　　App.jsxのstate(状態)
+    notebooks(ノートの一覧)
+    selectedNotebook(どのノートを開いているか)
+
+    App.jsxの機能
+    単語帳追加
+    単語帳の削除
+    単語追加
+    単語削除
+    画面の切り替え
+
+
+    
