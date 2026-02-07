@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import AddNotebook from './components/AddNotebook'
 import NotebookList from './components/NotebookList'
 import NotebookDetail from './components/NotebookDetail'
-import SplashScreen from './src/SplashScreen'   // ← 追加
+import SplashScreen from './components/SplashScreen.jsx';
 
 function App() {
   const [notebooks, setNotebooks] = useState([])
-  cnst [selectedNotebook, setSelectedNotebook] = useState(null)
+  const [selectedNotebook, setSelectedNotebook] = useState(null)
 
   // ★ 読み込み完了フラグ
   const [loaded, setLoaded] = useState(false)
@@ -28,14 +28,12 @@ function App() {
   }, [notebooks, loaded])
 
   // ★ スプラッシュ画面
-const [showSplash, setShowSplash] = useState(true)
+  const [showSplash, setShowSplash] = useState(true)
 
-// ★ スプラッシュ画面を最優先で表示
-if (showSplash) {
-  return <SplashScreen onFinish={() => setShowSplash(false)} />
-}
-
-
+  // ★ スプラッシュ画面を最優先で表示
+  if (showSplash) {
+    return <SplashScreen onFinish={() => setShowSplash(false)} />
+  }
 
   // ★ 詳細ページ
   if (selectedNotebook !== null) {
