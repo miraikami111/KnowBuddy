@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import AddNotebook from './components/AddNotebook'
 import NotebookList from './components/NotebookList'
 import NotebookDetail from './components/NotebookDetail'
+import SplashScreen from './src/SplashScreen'   // ← 追加
 
 function App() {
   const [notebooks, setNotebooks] = useState([])
-  const [selectedNotebook, setSelectedNotebook] = useState(null)
+  cnst [selectedNotebook, setSelectedNotebook] = useState(null)
 
   // ★ 読み込み完了フラグ
   const [loaded, setLoaded] = useState(false)
@@ -26,50 +27,15 @@ function App() {
     }
   }, [notebooks, loaded])
 
-  // ★ 単語帳追加
-  const handleAddNotebook = (title) => {
-    const newNotebook = {
-      id: Date.now(),
-      title,
-      words: []
-    }
-    setNotebooks(prev => [...prev, newNotebook])
-  }
+  // ★ スプラッシュ画面
+const [showSplash, setShowSplash] = useState(true)
 
-  // ★ 単語帳削除
-  const handleDeleteNotebook = (id) => {
-    const ok = window.confirm("Are you sure that you want to 'Delete'?")
-    if (!ok) return
-    setNotebooks(prev => prev.filter(note => note.id !== id))
-  }
+// ★ スプラッシュ画面を最優先で表示
+if (showSplash) {
+  return <SplashScreen onFinish={() => setShowSplash(false)} />
+}
 
-  // ★ 単語追加
-  const handleAddWord = (notebookId, question, answer) => {
-    setNotebooks(prev =>
-      prev.map(nb =>
-        nb.id === notebookId
-          ? {
-              ...nb,
-              words: [...nb.words, { id: Date.now(), question, answer }]
-            }
-          : nb
-      )
-    )
-  }
 
-  // ★ 単語削除
-  const handleDeleteWord = (notebookId, wordId) => {
-    setNotebooks(prev =>
-      prev.map(nb =>
-        nb.id === notebookId
-          ? {
-              ...nb,
-              words: nb.words.filter(w => w.id !== wordId)
-            }
-          : nb
-      )
-    )
-  }
 
   // ★ 詳細ページ
   if (selectedNotebook !== null) {
