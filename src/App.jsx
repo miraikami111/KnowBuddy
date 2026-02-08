@@ -17,7 +17,7 @@ function App() {
     if (saved) {
       setNotebooks(JSON.parse(saved))
     }
-    setLoaded(true) // ← 読み込み完了
+    setLoaded(true)
   }, [])
 
   // ★ ② 読み込み完了後だけ保存する
@@ -27,10 +27,59 @@ function App() {
     }
   }, [notebooks, loaded])
 
+  // ★ ノート追加
+  function handleAddNotebook(title) {
+    const newNotebook = {
+      id: Date.now(),
+      title,
+      words: []   // ← これが絶対必要！
+    };
+    setNotebooks([...notebooks, newNotebook]);
+  }
+
+  // ★ ノート削除
+  function handleDeleteNotebook(id) {
+    setNotebooks(notebooks.filter(n => n.id !== id));
+  }
+
+  // ★ 単語追加
+  function handleAddWord(notebookId, question, answer) {
+    setNotebooks(prev =>
+      prev.map(nb =>
+        nb.id === notebookId
+          ? {
+              ...nb,
+              words: [
+                ...nb.words,
+                {
+                  id: Date.now(),
+                  question,
+                  answer
+                }
+              ]
+            }
+          : nb
+      )
+    );
+  }
+
+  // ★ 単語削除
+  function handleDeleteWord(notebookId, wordId) {
+    setNotebooks(prev =>
+      prev.map(nb =>
+        nb.id === notebookId
+          ? {
+              ...nb,
+              words: nb.words.filter(w => w.id !== wordId)
+            }
+          : nb
+      )
+    );
+  }
+
   // ★ スプラッシュ画面
   const [showSplash, setShowSplash] = useState(true)
 
-  // ★ スプラッシュ画面を最優先で表示
   if (showSplash) {
     return <SplashScreen onFinish={() => setShowSplash(false)} />
   }
