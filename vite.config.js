@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: "/knowbuddy_new/",   // ★ GitHub Pages 用に追加するのはこれだけ！
+  base: "/KnowBuddy/",   // ← これが正しい！
   server: {
     host: true,
     https: true
