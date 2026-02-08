@@ -4,26 +4,27 @@ import img2 from "../assets/512pink.png";
 
 export default function SplashScreen({ onFinish }) {
   const [step, setStep] = useState(1);
-  const [fade, setFade] = useState(true); // ← フェード用
+  const [fade, setFade] = useState(true);
 
   useEffect(() => {
-    // 1枚目 → 2秒後にフェードアウト
-    const timer1 = setTimeout(() => {
-      setFade(false); // フェードアウト
-      setTimeout(() => {
-        setStep(2);    // 画像切り替え
-        setFade(true); // フェードイン
-      }, 500); // フェードアウト時間
-    }, 2000);
+    // 0〜2秒：1枚目フェードイン
+    // 2〜2.5秒：フェードアウト
+    // 2.5秒：2枚目に切り替え
+    // 2.5〜3秒：フェードイン
+    // 4秒：終了
 
-    // 4秒後に終了
-    const timer2 = setTimeout(() => onFinish(), 4000);
+    const timeline = [
+      { time: 2000, action: () => setFade(false) },          // 1枚目フェードアウト
+      { time: 2500, action: () => { setStep(2); setFade(true); } }, // 2枚目フェードイン
+      { time: 4000, action: () => onFinish() }               // スプラッシュ終了
+    ];
 
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-    };
-  }, []);
+    const timers = timeline.map(item =>
+      setTimeout(item.action, item.time)
+    );
+
+    return () => timers.forEach(t => clearTimeout(t));
+  }, [onFinish]);
 
   return (
     <div style={styles.container}>
