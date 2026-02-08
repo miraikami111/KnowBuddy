@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import img1 from "./assets/512pink.png";
-import img2 from "./assets/512green.png";
+import img1 from "../assets/512green.png";
+import img2 from "../assets/512pink.png";
 
 export default function SplashScreen({ onFinish }) {
   const [step, setStep] = useState(1);
