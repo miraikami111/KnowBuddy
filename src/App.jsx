@@ -1,117 +1,119 @@
-import React, { useState, useEffect } from 'react'
-import AddNotebook from './components/AddNotebook'
-import NotebookList from './components/NotebookList'
-import NotebookDetail from './components/NotebookDetail'
-import SplashScreen from './components/SplashScreen.jsx';
+import React, { useState, useEffect } from "react";
+import AddNotebook from "./components/AddNotebook";
+import NotebookList from "./components/NotebookList";
+import NotebookDetail from "./components/NotebookDetail";
+import Quiz from "./components/Quiz";
+import SplashScreen from "./components/SplashScreen"; // ここを追加
 
 function App() {
-  const [notebooks, setNotebooks] = useState([])
-  const [selectedNotebook, setSelectedNotebook] = useState(null)
+  const [notebooks, setNotebooks] = useState([]);
+  const [selectedNotebook, setSelectedNotebook] = useState(null);
 
-  // ★ 読み込み完了フラグ
-  const [loaded, setLoaded] = useState(false)
+  // スプラッシュ管理
+  const [showSplash, setShowSplash] = useState(true);
 
-  // ★ ① localStorage から読み込む
+  // クイズ管理
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [quizWords, setQuizWords] = useState([]);
+
+  // localStorage読み込み
   useEffect(() => {
-    const saved = localStorage.getItem("notebooks")
-    if (saved) {
-      setNotebooks(JSON.parse(saved))
-    }
-    setLoaded(true)
-  }, [])
+    const saved = localStorage.getItem("notebooks");
+    if (saved) setNotebooks(JSON.parse(saved));
+  }, []);
 
-  // ★ ② 読み込み完了後だけ保存する
+  // localStorage保存
   useEffect(() => {
-    if (loaded) {
-      localStorage.setItem("notebooks", JSON.stringify(notebooks))
-    }
-  }, [notebooks, loaded])
+    localStorage.setItem("notebooks", JSON.stringify(notebooks));
+  }, [notebooks]);
 
-  // ★ ノート追加
-  function handleAddNotebook(title) {
-    const newNotebook = {
-      id: Date.now(),
-      title,
-      words: []   // ← これが絶対必要！
-    };
+  // Notebook追加
+  const handleAddNotebook = (title) => {
+    const newNotebook = { id: Date.now(), title, words: [] };
     setNotebooks([...notebooks, newNotebook]);
-  }
+  };
 
-  // ★ ノート削除
-  function handleDeleteNotebook(id) {
+  // Notebook削除
+  const handleDeleteNotebook = (id) => {
     setNotebooks(notebooks.filter(n => n.id !== id));
-  }
+  };
 
-  // ★ 単語追加
-  function handleAddWord(notebookId, question, answer) {
+  // 単語追加
+  const handleAddWord = (notebookId, question, answer) => {
     setNotebooks(prev =>
       prev.map(nb =>
         nb.id === notebookId
-          ? {
-              ...nb,
-              words: [
-                ...nb.words,
-                {
-                  id: Date.now(),
-                  question,
-                  answer
-                }
-              ]
-            }
+          ? { ...nb, words: [...nb.words, { id: Date.now(), question, answer }] }
           : nb
       )
     );
-  }
+  };
 
-  // ★ 単語削除
-  function handleDeleteWord(notebookId, wordId) {
+  // 単語削除
+  const handleDeleteWord = (notebookId, wordId) => {
     setNotebooks(prev =>
       prev.map(nb =>
         nb.id === notebookId
-          ? {
-              ...nb,
-              words: nb.words.filter(w => w.id !== wordId)
-            }
+          ? { ...nb, words: nb.words.filter(w => w.id !== wordId) }
           : nb
       )
     );
-  }
+  };
 
-  // ★ スプラッシュ画面
-  const [showSplash, setShowSplash] = useState(true)
+  // Notebook単位でクイズ開始
+  const startQuiz = (notebook) => {
+    if (notebook.words.length === 0) {
+      alert("単語がありません！");
+      return;
+    }
+    const shuffledWords = [...notebook.words].sort(() => Math.random() - 0.5);
+    setQuizWords(shuffledWords);
+    setShowQuiz(true);
+  };
 
+  // クイズ終了
+  const finishQuiz = () => setShowQuiz(false);
+
+  // ----------------------------
+  // 表示切り替え順序
+  // ----------------------------
+
+  // ① スプラッシュ画面
   if (showSplash) {
-    return <SplashScreen onFinish={() => setShowSplash(false)} />
+    return <SplashScreen onFinish={() => setShowSplash(false)} />;
   }
 
-  // ★ 詳細ページ
-  if (selectedNotebook !== null) {
-    const notebook = notebooks.find(n => n.id === selectedNotebook)
+  // ② クイズ画面
+  if (showQuiz) {
+    return <Quiz quizWords={quizWords} onFinish={finishQuiz} />;
+  }
 
+  // ③ Notebook詳細
+  if (selectedNotebook !== null) {
+    const notebook = notebooks.find(n => n.id === selectedNotebook);
     return (
       <NotebookDetail
         notebook={notebook}
         onBack={() => setSelectedNotebook(null)}
         onAddWord={(q, a) => handleAddWord(selectedNotebook, q, a)}
         onDeleteWord={(wordId) => handleDeleteWord(selectedNotebook, wordId)}
+        onStartQuiz={() => startQuiz(notebook)}
       />
-    )
+    );
   }
 
-  // ★ 一覧ページ
+  // ④ Notebook一覧ページ
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: "20px" }}>
       <h1>KnowBuddy</h1>
-
       <AddNotebook onAdd={handleAddNotebook} />
-
       <NotebookList
         notebooks={notebooks}
         onDelete={handleDeleteNotebook}
         onSelect={(id) => setSelectedNotebook(id)}
       />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

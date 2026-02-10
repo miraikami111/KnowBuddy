@@ -14,10 +14,9 @@ export default function SplashScreen({ onFinish }) {
     // 4秒：終了
 
     const timeline = [
-      { time: 2000, action: () => setFade(false) },          // 1枚目フェードアウト
-      { time: 2500, action: () => { setStep(2); setFade(true); } }, // 2枚目フェードイン
-      { time: 4000, action: () => onFinish() }               // スプラッシュ終了
-    ];
+  { time: 2000, action: () => { setStep(2); setFade(true); } }, // img2に即切り替え & フェードイン
+  { time: 5000, action: () => onFinish() }                     // スプラッシュ終了（img2表示3秒）
+];
 
     const timers = timeline.map(item =>
       setTimeout(item.action, item.time)

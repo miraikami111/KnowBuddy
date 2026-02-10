@@ -1,20 +1,25 @@
+// NotebookDetail.jsx
+import React from "react";
 import WordCard from "./WordCard";
 import AddWordForm from "./AddWordForm";
 
-function NotebookDetail({ notebook, onBack, onAddWord, onDeleteWord }) {
+function NotebookDetail({ notebook, onBack, onAddWord, onDeleteWord, onStartQuiz }) {
   if (!notebook) {
-  return (
-    <div>
-      <p>Notebook not found.</p>
-      <button onClick={onBack}>Back</button>
-    </div>
-  );
-}
- 
+    return (
+      <div>
+        <p>Notebook not found.</p>
+        <button onClick={onBack}>Back</button>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h2>{notebook.title}</h2>
       <button onClick={onBack}>Back</button>
+      <button onClick={onStartQuiz} style={{ marginLeft: "10px" }}>
+        このノートでクイズ開始
+      </button>
 
       <AddWordForm onAddWord={onAddWord} />
 
