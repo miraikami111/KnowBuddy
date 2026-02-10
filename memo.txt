@@ -14,5 +14,10 @@ App.jsx　★全部のまとめ役
     単語削除
     画面の切り替え
 
+npm run dev
 
-    
+
+git status          # 変更内容を確認
+git add .
+git commit -m "変更内容のコメント"
+git push

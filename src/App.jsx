@@ -5,6 +5,10 @@ import NotebookDetail from "./components/NotebookDetail";
 import Quiz from "./components/Quiz";
 import SplashScreen from "./components/SplashScreen"; // ここを追加
 
+
+
+
+
 function App() {
   const [notebooks, setNotebooks] = useState([]);
   const [selectedNotebook, setSelectedNotebook] = useState(null);
@@ -105,7 +109,7 @@ function App() {
   // ④ Notebook一覧ページ
   return (
     <div style={{ padding: "20px" }}>
-      <h1>KnowBuddy</h1>
+      <h1 className="marumoji">KnowBuddy</h1>
       <AddNotebook onAdd={handleAddNotebook} />
       <NotebookList
         notebooks={notebooks}

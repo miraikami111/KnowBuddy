@@ -1,39 +1,33 @@
 import React, { useState } from "react";
+import "./WordCard.css";
 
-function WordCard({ question, answer, onDelete }) {
-  const [showAnswer, setShowAnswer] = useState(false);
+function WordCard({ question, answer, onDelete, inFlushCard, onToggleFlushCard }) {
+  const [showAnswer, setShowAnswer] = useState(false); // 表裏管理
 
   return (
-    <div
-      onClick={() => setShowAnswer(!showAnswer)}
-      style={{
-        padding: "12px",
-        border: "1px solid #ccc",
-        borderRadius: "8px",
-        marginBottom: "10px",
-        cursor: "pointer",
-        background: "#f9f9f9",
-      }}
-    >
-      {showAnswer ? answer : question}
-
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          onDelete();
-        }}
-        style={{
-          marginLeft: "10px",
-          background: "#ff6666",
-          color: "white",
-          border: "none",
-          padding: "4px 8px",
-          borderRadius: "4px",
-          cursor: "pointer",
-        }}
+    <div className="word-card">
+      {/* クリックで表裏反転 */}
+      <div
+        className="text"
+        onClick={() => setShowAnswer(prev => !prev)}
+        style={{ cursor: "pointer", textAlign: "center" }}
       >
-        Delete
-      </button>
+        {showAnswer ? (
+          <p className="answer">{answer}</p>
+        ) : (
+          <p className="question">{question}</p>
+        )}
+      </div>
+
+      <div className="word-card-buttons">
+        <button className="delete-button" onClick={onDelete}>DELETE</button>
+        <button
+          className={`flushcard-button ${inFlushCard ? "on" : "off"}`}
+          onClick={onToggleFlushCard}
+        >
+          {inFlushCard ? "📖 ON" : "📘 OFF"}
+        </button>
+      </div>
     </div>
   );
 }

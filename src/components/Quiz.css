@@ -1,0 +1,88 @@
+.quiz-container {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  font-family: "Indie Flower", cursive;
+}
+
+.card {
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: 40px 20px;
+  margin-bottom: 80px;
+  cursor: pointer;
+  width: 80vw;
+  max-width: 600px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: clamp(28px, 7vw, 70px);
+  line-height: 1.2;
+  
+}
+
+.card p.answer {
+  margin: 20px 0 0 0;
+  font-size: clamp(24px, 6vw, 60px);
+  line-height: 1.2;
+  opacity: 0;               /* 初期は非表示 */
+  transition: opacity 0.5s ease-in-out; /* フェードイン */
+}
+
+.card p.answer.show {
+  opacity: 1;               /* クラス付与で表示 */
+}
+
+.next-button {
+  position: absolute;
+  bottom: 20px;
+  padding: 10px 30px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #646cff;
+  color: white;
+  border: none;
+  transition: background 0.2s;
+}
+
+.next-button:hover {
+  background-color: #535bf2;
+}
+.quiz-card {
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 40px 20px;
+  margin-bottom: 80px;
+  cursor: pointer;
+
+  /* 文字がはみ出ないように */
+  word-wrap: break-word;      /* 長い単語を折り返す */
+  white-space: normal;        /* 改行可能にする */
+  overflow-wrap: break-word;  /* さらに安全に折り返す */
+}
+
+.quiz-card h2 {
+  font-size: 4vw;    /* 画面幅に応じて文字サイズを自動調整 */
+  margin-bottom: 20px;
+}
+
+.quiz-card p {
+  font-size: 5vw;    /* 答えは少し大きめに */
+  margin: 10px 0;
+  word-wrap: break-word;
+  white-space: normal;
+}
