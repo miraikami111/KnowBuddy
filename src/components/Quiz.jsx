@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./Quiz.css";
 
 export default function Quiz({ quizWords, onFinish }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
 
-  const cardRef = useRef(null);
-  const [questionFont, setQuestionFont] = useState(48);
-  const [answerFont, setAnswerFont] = useState(42);
+  if (quizWords.length === 0) return <p>単語がありません</p>;
 
   const word = quizWords[currentIndex];
 
@@ -16,67 +14,49 @@ export default function Quiz({ quizWords, onFinish }) {
     if (currentIndex + 1 < quizWords.length) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      onFinish();
+      onFinish(); // Quiz 終了
     }
   };
 
-  // フォントサイズ調整（word が存在する場合のみ）
-  useEffect(() => {
-    if (!word) return;
-    const card = cardRef.current;
-    if (!card) return;
-
-    const adjustFont = (element, maxFont, minFont, setter) => {
-      if (!element) return;
-      let fontSize = maxFont;
-      element.style.fontSize = `${fontSize}px`;
-
-      while (element.scrollHeight > element.clientHeight && fontSize > minFont) {
-        fontSize -= 1;
-        element.style.fontSize = `${fontSize}px`;
-      }
-
-      setter(fontSize);
-    };
-
-    const questionEl = card.querySelector(".question");
-    const answerEl = card.querySelector(".answer");
-
-    adjustFont(questionEl, 48, 18, setQuestionFont);
-
-    if (showAnswer) {
-      adjustFont(answerEl, 42, 16, setAnswerFont);
+  const prevWord = () => {
+    setShowAnswer(false);
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
     }
-  }, [currentIndex, showAnswer, word]); // word が undefined になっても安全
+  };
 
-  if (!word) return null;
+  const goBack = () => {
+    onFinish(); // NotebookDetail に戻る
+  };
 
   return (
-    <div className="quiz-container">
+    <div className="quiz-wrapper">
+      {/* カード */}
       <div
         key={word.id}
         className="card"
-        ref={cardRef}
-        onClick={() => setShowAnswer(true)}
+        onClick={() => setShowAnswer(prev => !prev)}
       >
-        <h2 className="question" style={{ fontSize: `${questionFont}px` }}>
-          {word.question}
-        </h2>
-
-        {showAnswer && (
-          <p className="answer show" style={{ fontSize: `${answerFont}px` }}>
-            {word.answer}
-          </p>
+        {showAnswer ? (
+          <p className="answer">{word.answer}</p>
+        ) : (
+          <h2>{word.question}</h2>
         )}
-
-        {!showAnswer && (
-          <p style={{ fontSize: "12px", color: "#888" }}>クリックで答え表示</p>
-        )}
+        {!showAnswer && <p className="hint">クリックで答え表示</p>}
       </div>
 
-      <button className="next-button" onClick={nextWord}>
-        次へ
-      </button>
+      {/* カード外ボタン */}
+      <div className="quiz-controls">
+        <button onClick={prevWord} disabled={currentIndex === 0}>
+          ← 前のカード
+        </button>
+        <button onClick={nextWord} disabled={currentIndex === quizWords.length - 1}>
+          次へ →
+        </button>
+        <button onClick={goBack}>
+          前の画面に戻る
+        </button>
+      </div>
     </div>
   );
 }

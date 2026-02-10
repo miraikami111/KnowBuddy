@@ -3,11 +3,7 @@ import AddNotebook from "./components/AddNotebook";
 import NotebookList from "./components/NotebookList";
 import NotebookDetail from "./components/NotebookDetail";
 import Quiz from "./components/Quiz";
-import SplashScreen from "./components/SplashScreen"; // ここを追加
-
-
-
-
+import SplashScreen from "./components/SplashScreen";
 
 function App() {
   const [notebooks, setNotebooks] = useState([]);
@@ -64,35 +60,29 @@ function App() {
     );
   };
 
-  // Notebook単位でクイズ開始
-  const startQuiz = (notebook) => {
-    if (notebook.words.length === 0) {
-      alert("単語がありません！");
+  // Notebook単位でクイズ開始（flushCardWords のみ）
+  const startQuiz = (notebook, flushCardWords) => {
+    // flushCard に追加された単語だけ抽出
+    const quizWords = notebook.words.filter(word => flushCardWords.includes(word.id));
+    
+    if (quizWords.length === 0) {
+      alert("FlushCardに追加された単語がありません！");
       return;
     }
-    const shuffledWords = [...notebook.words].sort(() => Math.random() - 0.5);
+
+    // シャッフル
+    const shuffledWords = [...quizWords].sort(() => Math.random() - 0.5);
     setQuizWords(shuffledWords);
     setShowQuiz(true);
   };
 
-  // クイズ終了
   const finishQuiz = () => setShowQuiz(false);
 
   // ----------------------------
   // 表示切り替え順序
   // ----------------------------
-
-  // ① スプラッシュ画面
-  if (showSplash) {
-    return <SplashScreen onFinish={() => setShowSplash(false)} />;
-  }
-
-  // ② クイズ画面
-  if (showQuiz) {
-    return <Quiz quizWords={quizWords} onFinish={finishQuiz} />;
-  }
-
-  // ③ Notebook詳細
+  if (showSplash) return <SplashScreen onFinish={() => setShowSplash(false)} />;
+  if (showQuiz) return <Quiz quizWords={quizWords} onFinish={finishQuiz} />;
   if (selectedNotebook !== null) {
     const notebook = notebooks.find(n => n.id === selectedNotebook);
     return (
@@ -101,12 +91,11 @@ function App() {
         onBack={() => setSelectedNotebook(null)}
         onAddWord={(q, a) => handleAddWord(selectedNotebook, q, a)}
         onDeleteWord={(wordId) => handleDeleteWord(selectedNotebook, wordId)}
-        onStartQuiz={() => startQuiz(notebook)}
+        onStartQuiz={(flushCardWords) => startQuiz(notebook, flushCardWords)}
       />
     );
   }
 
-  // ④ Notebook一覧ページ
   return (
     <div style={{ padding: "20px" }}>
       <h1 className="marumoji">KnowBuddy</h1>

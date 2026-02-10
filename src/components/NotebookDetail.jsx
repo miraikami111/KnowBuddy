@@ -13,28 +13,25 @@ function NotebookDetail({ notebook, onBack, onAddWord, onDeleteWord, onStartQuiz
     );
   }
 
-  // localStorage用のキーを作成（notebookごとに管理）
   const storageKey = `flushCardWords_${notebook.id}`;
-
-  // FlushCard に追加された単語IDを管理
   const [flushCardWords, setFlushCardWords] = useState([]);
 
-  // ① 初期化時に localStorage から読み込み
+  // 初期化時に localStorage から読み込み
   useEffect(() => {
     const saved = localStorage.getItem(storageKey);
     if (saved) setFlushCardWords(JSON.parse(saved));
   }, [storageKey]);
 
-  // ② flushCardWords が更新されたら localStorage に保存
+  // flushCardWords が更新されたら localStorage に保存
   useEffect(() => {
     localStorage.setItem(storageKey, JSON.stringify(flushCardWords));
   }, [flushCardWords, storageKey]);
 
   const toggleFlushCard = (wordId) => {
-    setFlushCardWords((prev) =>
+    setFlushCardWords(prev =>
       prev.includes(wordId)
-        ? prev.filter(id => id !== wordId) // OFFにする
-        : [...prev, wordId]                // ONにする
+        ? prev.filter(id => id !== wordId)
+        : [...prev, wordId]
     );
   };
 
@@ -44,13 +41,18 @@ function NotebookDetail({ notebook, onBack, onAddWord, onDeleteWord, onStartQuiz
 
       <div className="notebook-buttons">
         <button onClick={onBack} className="action-button">Back</button>
-        <button onClick={onStartQuiz} className="action-button">Flashcard</button>
+        <button
+          onClick={() => onStartQuiz(flushCardWords)}
+          className="action-button"
+        >
+          Flashcard
+        </button>
       </div>
 
       <AddWordForm onAddWord={onAddWord} />
 
       <div className="word-list">
-        {notebook.words.map((word) => (
+        {notebook.words.map(word => (
           <WordCard
             key={word.id}
             question={word.question}

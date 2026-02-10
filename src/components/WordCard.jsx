@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./WordCard.css";
 
 function WordCard({ question, answer, onDelete, inFlushCard, onToggleFlushCard }) {
-  const [showAnswer, setShowAnswer] = useState(false); // 表裏管理
+  // 初期は answer が表示される
+  const [showAnswer, setShowAnswer] = useState(true);
 
   return (
     <div className="word-card">
@@ -20,7 +21,10 @@ function WordCard({ question, answer, onDelete, inFlushCard, onToggleFlushCard }
       </div>
 
       <div className="word-card-buttons">
-        <button className="delete-button" onClick={onDelete}>DELETE</button>
+        <button className="delete-button" onClick={onDelete}>
+          DELETE
+        </button>
+
         <button
           className={`flushcard-button ${inFlushCard ? "on" : "off"}`}
           onClick={onToggleFlushCard}
