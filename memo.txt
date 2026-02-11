@@ -22,9 +22,18 @@ git add .
 git commit -m "変更内容のコメント"
 git push
 
-*UPDATREコマンド
+
+https://knowbuddy.vercel.app
+
+ブランチの確認
+git branch　
+
+※mainになっていたらOK
+もし違うなら↓のコマンドを実行
+git push origin main
+
+
+*UPDATREコマンド　（すっごく大事）
 git add .
 git commit -m "update"
 git push
-
-https://knowbuddy.vercel.app
