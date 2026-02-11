@@ -21,3 +21,10 @@ git status          # 変更内容を確認
 git add .
 git commit -m "変更内容のコメント"
 git push
+
+*UPDATREコマンド
+git add .
+git commit -m "update"
+git push
+
+https://knowbuddy.vercel.app
