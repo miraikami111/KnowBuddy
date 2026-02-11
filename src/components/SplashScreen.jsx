@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react";
 import img1 from "../assets/512green.png";
 import img2 from "../assets/512pink.png";
+import img3 from "../assets/512yellow.png";
 
 export default function SplashScreen({ onFinish }) {
   const [step, setStep] = useState(1);
-  const [fade, setFade] = useState(true);
+  const [fade, setFade] = useState(false); // 最初は透明
 
   useEffect(() => {
-    // 0〜2秒：1枚目フェードイン
-    // 2〜2.5秒：フェードアウト
-    // 2.5秒：2枚目に切り替え
-    // 2.5〜3秒：フェードイン
-    // 4秒：終了
-
     const timeline = [
-  { time: 2000, action: () => { setStep(2); setFade(true); } }, // img2に即切り替え & フェードイン
-  { time: 5000, action: () => onFinish() }                     // スプラッシュ終了（img2表示3秒）
-];
+      { time: 0, action: () => setFade(true) },        // フェードイン開始
+      { time: 2000, action: () => setStep(2) },        // img3
+      { time: 3500, action: () => setStep(3) },        // img2
+      { time: 4500, action: () => setFade(false) },    // フェードアウト開始
+      { time: 5000, action: () => onFinish() },        // 終了
+    ];
 
     const timers = timeline.map(item =>
       setTimeout(item.action, item.time)
@@ -25,10 +23,15 @@ export default function SplashScreen({ onFinish }) {
     return () => timers.forEach(t => clearTimeout(t));
   }, [onFinish]);
 
+  const currentImage =
+    step === 1 ? img1 :
+    step === 2 ? img3 :
+    img2;
+
   return (
     <div style={styles.container}>
       <img
-        src={step === 1 ? img1 : img2}
+        src={currentImage}
         alt="splash"
         style={{
           ...styles.image,

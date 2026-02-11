@@ -48,24 +48,9 @@ a:hover {
 
 body {
   margin: 0;
-  /* ブラウザ標準の余白を消す */
-
-  display: flex;
-  /* Flexbox レイアウトを有効化 */
-
-  justify-content: center;
-  /* 横方向（左右）を中央揃え */
-
-  align-items: center;
-  /* 縦方向（上下）を中央揃え */
-
   min-width: 320px;
-  /* 画面の最小横幅（スマホ対応） */
-
   min-height: 100vh;
-  /* 画面の高さを100%使う */
 }
-
 h1 {
   font-size: 3.2em;
   /* 親要素基準で3.2倍の文字サイズ */
@@ -125,4 +110,80 @@ button:focus-visible {
     background-color: rgb(1, 241, 201);
     /* ライトモード用のボタン背景色 */
   }
+}
+
+/* --- KnowBuddy theme --- */
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: rgba(17, 24, 39, 0.12);
+  --shadow: 0 10px 30px rgba(17, 24, 39, 0.10);
+  --radius: 16px;
+}
+
+body{
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* app layout */
+.app-shell{
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 28px 16px;
+}
+
+.app-card{
+  width: min(920px, 100%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+/* title */
+h1{
+  margin: 0 0 14px 0;
+  letter-spacing: 0.5px;
+}
+
+/* inputs */
+input[type="text"]{
+  width: 100%;
+  max-width: 520px;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  outline: none;
+}
+
+input[type="text"]:focus{
+  border-color: rgba(99, 102, 241, 0.55);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+/* buttons */
+button{
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: #111827;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.12);
+}
+
+button:hover{
+  transform: translateY(-1px);
+}
+
+button:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
 }

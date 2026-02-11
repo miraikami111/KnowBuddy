@@ -35,7 +35,7 @@ export default function Quiz({ quizWords, onFinish }) {
       <div
         key={word.id}
         className="card"
-        onClick={() => setShowAnswer(prev => !prev)}
+        onClick={() => setShowAnswer((prev) => !prev)}
       >
         {showAnswer ? (
           <p className="answer">{word.answer}</p>
@@ -50,12 +50,12 @@ export default function Quiz({ quizWords, onFinish }) {
         <button onClick={prevWord} disabled={currentIndex === 0}>
           ← 前のカード
         </button>
-        <button onClick={nextWord} disabled={currentIndex === quizWords.length - 1}>
-          次へ →
+
+        <button onClick={nextWord}>
+          {currentIndex === quizWords.length - 1 ? "終了" : "次へ →"}
         </button>
-        <button onClick={goBack}>
-          前の画面に戻る
-        </button>
+
+        <button onClick={goBack}>前の画面に戻る</button>
       </div>
     </div>
   );

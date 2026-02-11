@@ -35,13 +35,19 @@ function App() {
 
   // Notebook削除
   const handleDeleteNotebook = (id) => {
-    setNotebooks(notebooks.filter(n => n.id !== id));
-  };
+  setNotebooks(prev => prev.filter(n => n.id !== id));
+
+  // もし今開いてるノートを消したなら、一覧に戻る
+  if (selectedNotebook === id) {
+    setSelectedNotebook(null);
+  }
+};
+
 
   // 単語追加
   const handleAddWord = (notebookId, question, answer) => {
-    setNotebooks(prev =>
-      prev.map(nb =>
+    setNotebooks((prev) =>
+      prev.map((nb) =>
         nb.id === notebookId
           ? { ...nb, words: [...nb.words, { id: Date.now(), question, answer }] }
           : nb
@@ -51,26 +57,26 @@ function App() {
 
   // 単語削除
   const handleDeleteWord = (notebookId, wordId) => {
-    setNotebooks(prev =>
-      prev.map(nb =>
+    setNotebooks((prev) =>
+      prev.map((nb) =>
         nb.id === notebookId
-          ? { ...nb, words: nb.words.filter(w => w.id !== wordId) }
+          ? { ...nb, words: nb.words.filter((w) => w.id !== wordId) }
           : nb
       )
     );
   };
 
-  // Notebook単位でクイズ開始（flushCardWords のみ）
+  // Notebook単位でクイズ開始
   const startQuiz = (notebook, flushCardWords) => {
-    // flushCard に追加された単語だけ抽出
-    const quizWords = notebook.words.filter(word => flushCardWords.includes(word.id));
-    
+    const quizWords = notebook.words.filter((word) =>
+      flushCardWords.includes(word.id)
+    );
+
     if (quizWords.length === 0) {
       alert("FlushCardに追加された単語がありません！");
       return;
     }
 
-    // シャッフル
     const shuffledWords = [...quizWords].sort(() => Math.random() - 0.5);
     setQuizWords(shuffledWords);
     setShowQuiz(true);
@@ -78,13 +84,11 @@ function App() {
 
   const finishQuiz = () => setShowQuiz(false);
 
-  // ----------------------------
-  // 表示切り替え順序
-  // ----------------------------
+  // 表示切り替え
   if (showSplash) return <SplashScreen onFinish={() => setShowSplash(false)} />;
   if (showQuiz) return <Quiz quizWords={quizWords} onFinish={finishQuiz} />;
   if (selectedNotebook !== null) {
-    const notebook = notebooks.find(n => n.id === selectedNotebook);
+    const notebook = notebooks.find((n) => n.id === selectedNotebook);
     return (
       <NotebookDetail
         notebook={notebook}
@@ -97,16 +101,20 @@ function App() {
   }
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1 className="marumoji">KnowBuddy</h1>
-      <AddNotebook onAdd={handleAddNotebook} />
-      <NotebookList
-        notebooks={notebooks}
-        onDelete={handleDeleteNotebook}
-        onSelect={(id) => setSelectedNotebook(id)}
-      />
+    <div className="app-shell">
+      <div className="app-card">
+        <h1 className="marumoji">KnowBuddy</h1>
+
+        <AddNotebook onAdd={handleAddNotebook} />
+
+        <NotebookList
+          notebooks={notebooks}
+          onDelete={handleDeleteNotebook}
+          onSelect={(id) => setSelectedNotebook(id)}
+        />
+      </div>
     </div>
   );
-}
+} // ← ここが必要！
 
 export default App;
