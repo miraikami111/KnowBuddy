@@ -16,6 +16,8 @@
 .word-card-buttons {
   display: flex;
   gap: 8px;
+  
+
 }
 
 .flushcard-button {
@@ -26,7 +28,7 @@
   background-color: #f0f0f0;
   font-size: 14px;
 
-  /* 追加 */
+  
   white-space: nowrap; /* テキストを折り返さない */
   display: flex;
   align-items: center;
@@ -71,6 +73,7 @@
 }
 .answer.hidden {
   color: #888;
-  font-style: italic;
+  font-style: normal;
+  font-weight: 700; 
 }
 

@@ -37,3 +37,45 @@ git push origin main
 git add .
 git commit -m "update"
 git push
+
+ここから↓編集した後の反映↓
+
+もしブラウザが古い場合は Ctrl+Shift+R で強制リロード
+git status
+
+git add .
+
+git commit -m "Describe your change"
+
+git push origin main
+
+
+🔹 4️⃣ Vercel でデプロイ確認
+
+GitHub に push すると Vercel が自動でビルド
+
+Vercel のダッシュボードで Deployments を開く
+
+最新デプロイが Ready になると反映完了
+
+本番 URL で確認できます（例: https://know-buddy.vercel.app）
+
+💡 ポイント：
+
+デプロイには数秒〜1分程度かかる
+
+自動で本番環境に反映されるので手動操作は不要
+
+🔹 5️⃣ 編集 → 保存 → 反映の流れまとめ
+
+VS Code で編集
+
+保存（Ctrl+S）
+
+git add . && git commit -m "..."
+
+git push origin main
+
+Vercel が自動で更新
+
+ブラウザで確認
