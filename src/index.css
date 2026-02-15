@@ -187,3 +187,12 @@ button:disabled{
   cursor: not-allowed;
   transform: none;
 }
+
+.delete-button {
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #ffe5e5;
+  font-size: 14px;
+}
