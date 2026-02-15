@@ -4,6 +4,9 @@ import NotebookList from "./components/NotebookList";
 import NotebookDetail from "./components/NotebookDetail";
 import Quiz from "./components/Quiz";
 import SplashScreen from "./components/SplashScreen";
+import Tokage01 from "./assets/Tokage01.png"; 
+
+
 
 function App() {
   const [notebooks, setNotebooks] = useState([]);
@@ -104,6 +107,12 @@ function App() {
     <div className="app-shell">
       <div className="app-card">
         <h1 className="marumoji">KnowBuddy</h1>
+
+         <img
+          className="Tokage01"
+          src={Tokage01}
+          alt="KnowBuddy illustration"
+        />
 
         <AddNotebook onAdd={handleAddNotebook} />
 

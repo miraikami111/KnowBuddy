@@ -38,6 +38,7 @@ git add .
 git commit -m "update"
 git push
 
+<<<<<<< HEAD
 ここから↓編集した後の反映↓
 
 もしブラウザが古い場合は Ctrl+Shift+R で強制リロード
@@ -79,3 +80,38 @@ git push origin main
 Vercel が自動で更新
 
 ブラウザで確認
+=======
+git fetch origin
+git reset --hard origin/main
+
+🔵 いちばん確実（迷ったらこれ）
+
+学校のPCで：
+
+KnowBuddyフォルダ削除
+
+もう一度クローン
+
+git clone https://github.com/miraikami111/knowbuddy.git
+cd knowbuddy
+npm install
+npm run dev
+
+🎯 学校で作業するときの黄金ルール
+🔹 作業前
+git pull
+
+🔹 作業後
+git add .
+git commit -m "update"
+git push
+
+🌱 さらに安心するコツ
+
+学校で作業するとき：
+
+git branch
+
+
+で必ず * main になっているか確認。
+>>>>>>> e5525cb (updated215)

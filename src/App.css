@@ -43,3 +43,9 @@
 .marumoji{
 font-family: 'Luckiest Guy', cursive;
 }
+.app-card img.Tokage01 {
+  width: 90px;   /* 好きなサイズに変更OK */
+  height: auto;
+  display: block;
+  margin: 10px auto 18px;
+}
