@@ -65,12 +65,13 @@ h1 {
 
 
 button {
+  font-family: 'Inter', sans-serif;
   border-radius: 8px;
   border: 1px solid transparent; /* 初期は透明 */
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
+  
   background-color: #1a1a1a;
   color: black; /* 文字色は黒 */
   cursor: pointer;
@@ -186,13 +187,4 @@ button:disabled{
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
-}
-
-.delete-button {
-  cursor: pointer;
-  padding: 4px 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background-color: #ffe5e5;
-  font-size: 14px;
 }

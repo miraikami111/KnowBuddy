@@ -1,19 +1,25 @@
 .quiz-wrapper {
-  text-align: center;
-  padding: 20px;
-  position: relative;
+  min-height: 100vh;          /* 画面いっぱい */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    /* 縦中央 */
+  align-items: center;        /* 横中央 */
 }
 
+
 .card {
-  border: 2px solid #333;
-  border-radius: 8px;
-  padding: 40px 20px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 90%;
+  max-width: 600px;     /* カードの最大幅 */
+  min-height: 250px;    /* 高さを大きく */
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* 中の文字も中央 */
+  align-items: center;
 }
+
 
 .answer {
   font-size: 2em;
@@ -36,4 +42,13 @@
   font-size: 16px;
   border-radius: 6px;
   cursor: pointer;
+}
+.card .answer {
+  color: #d32f2f;      /* 赤 */
+  font-size: 32px;    /* 文字サイズを大きく */
+  font-weight: 700;   /* 太字 */
+  line-height: 1.6;
+}
+.card h2 {
+  font-size: 30px;   /* question も大きく */
 }
