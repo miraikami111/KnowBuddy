@@ -24,7 +24,8 @@ function NotebookList({ notebooks, onDelete, onSelect }) {
           >
             <span>{note.title}</span>
 
-            <button
+            <button 
+             className="delete-button"
               onClick={(e) => {
                 e.stopPropagation();
                 const ok = window.confirm(

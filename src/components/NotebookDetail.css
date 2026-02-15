@@ -67,6 +67,10 @@
 .word-card button:hover {
   background-color: #ff4c4c;
 }
+button.flashcard {
+  background-color: #ffeb3b;
+  color: #222;
+}
 
 
 

@@ -51,3 +51,9 @@ font-family: 'Luckiest Guy', cursive;
   margin: 10px auto 20px;
 }
 
+
+button.delete-button {
+  background-color: #ffe5e5;
+  color: #b30000;
+  border: 1px solid #ffb3b3;
+}

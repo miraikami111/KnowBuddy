@@ -8,7 +8,7 @@ function NotebookDetail({ notebook, onBack, onAddWord, onDeleteWord, onStartQuiz
     return (
       <div className="notebook-detail">
         <p>Notebook not found.</p>
-        <button onClick={onBack} className="action-button">Back</button>
+        <button onClick={onBack} className="action-button">☜Back</button>
       </div>
     );
   }
@@ -41,11 +41,13 @@ function NotebookDetail({ notebook, onBack, onAddWord, onDeleteWord, onStartQuiz
 
       <div className="notebook-buttons">
         <button onClick={onBack} className="action-button">Back</button>
-        <button
+
+        <button 
+        className="action-button flashcard"
           onClick={() => onStartQuiz(flushCardWords)}
-          className="action-button"
+         
         >
-          Flashcard
+          Flashcard🚀
         </button>
       </div>
 
