@@ -1,0 +1,86 @@
+.word-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.word-card .text {
+  flex: 1;
+  text-align: center;
+}
+
+.word-card-buttons {
+  display: flex;
+  gap: 8px;
+  
+
+}
+
+.flushcard-button {
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  font-size: 14px;
+
+  
+  white-space: nowrap; /* テキストを折り返さない */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flushcard-button:active {
+  transform: scale(0.95);
+}
+
+.delete-button {
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #ffe5e5;
+  font-size: 14px;
+}
+
+.flushcard-button.off {
+  background-color: lightgray;
+}
+
+.flushcard-button.on {
+  background-color: orange;
+}
+
+
+/* マウスを当てたとき */
+.flushcard-button.off:hover {
+  background-color: #b0b0b0; /* 濃いグレー */
+}
+
+/* ON状態はオレンジ */
+.flushcard-button.on {
+  background-color: orange;
+}
+
+/* ON状態にホバーを追加する場合 */
+.flushcard-button.on:hover {
+  background-color: darkorange;
+}
+.answer.hidden {
+  color: #888;
+  font-style: normal;
+  font-weight: 700; 
+}
+
+.answer,
+.question {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.6;
+}

@@ -1,0 +1,190 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* 全体で使うフォント指定（左から優先的に使われる） */
+
+  line-height: 1.5;
+  /* 行の高さ。文字の読みやすさに影響 */
+
+  font-weight: 400;
+  /* 文字の太さ（400 = 通常） */
+
+  color-scheme: light dark;
+  /* ブラウザにライト・ダーク両対応であることを伝える */
+
+  color: rgba(255, 255, 255, 0.87);
+  /* 文字色（白に少し透明を入れて柔らかく） */
+
+  background-color: #242424;
+  /* 背景色（ダークグレー） */
+
+  font-synthesis: none;
+  /* 太字や斜体をブラウザが勝手に作らないようにする */
+
+  text-rendering: optimizeLegibility;
+  /* 文字の可読性を優先して描画 */
+
+  -webkit-font-smoothing: antialiased;
+  /* Mac系ブラウザで文字をなめらかに表示 */
+
+  -moz-osx-font-smoothing: grayscale;
+  /* macOS Firefox 用の文字なめらか設定 */
+}
+
+a {
+  font-weight: 500;
+  /* リンク文字を少し太くする */
+
+  color: #646cff;
+  /* リンクの文字色 */
+
+  text-decoration: inherit;
+  /* 下線などの装飾を親要素から引き継ぐ */
+}
+
+a:hover {
+  color: #535bf2;
+  /* マウスを乗せたときのリンク色 */
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+h1 {
+  font-size: 3.2em;
+  /* 親要素基準で3.2倍の文字サイズ */
+
+  line-height: 1.1;
+  /* 見出し用に行間を詰める */
+}
+.handwriting {
+  font-family: "Indie Flower", cursive;
+}
+/* 手書き風フォント */
+
+
+button {
+  font-family: 'Inter', sans-serif;
+  border-radius: 8px;
+  border: 1px solid transparent; /* 初期は透明 */
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  
+  background-color: #1a1a1a;
+  color: black; /* 文字色は黒 */
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+button:hover {
+  background-color: #FFFDD0; /* 背景色はクリーム色 */
+  border-color: #646cff;     /* 枠線を表示 */
+  color: black;              /* 文字色は黒のまま */
+}
+
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+  /* キーボード操作時のフォーカス枠を表示 */
+}
+
+@media (prefers-color-scheme: light) {
+  /* OSやブラウザが「ライトモード」のときだけ適用 */
+
+  :root {
+    color: #213547;
+    /* 文字色をダークに変更 */
+
+    background-color: #ffffff;
+    /* 背景を白に変更 */
+  }
+
+  a:hover {
+    color: #747bff;
+    /* ライトモード時のリンク hover 色 */
+  }
+
+  button {
+    background-color: rgb(1, 241, 201);
+    /* ライトモード用のボタン背景色 */
+  }
+}
+
+/* --- KnowBuddy theme --- */
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: rgba(17, 24, 39, 0.12);
+  --shadow: 0 10px 30px rgba(17, 24, 39, 0.10);
+  --radius: 16px;
+}
+
+body{
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* app layout */
+.app-shell{
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 28px 16px;
+}
+
+.app-card{
+  width: min(920px, 100%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+/* title */
+h1{
+  margin: 0 0 14px 0;
+  letter-spacing: 0.5px;
+}
+
+/* inputs */
+input[type="text"]{
+  width: 100%;
+  max-width: 520px;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  outline: none;
+}
+
+input[type="text"]:focus{
+  border-color: rgba(99, 102, 241, 0.55);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+/* buttons */
+button{
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: #111827;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.12);
+}
+
+button:hover{
+  transform: translateY(-1px);
+}
+
+button:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
