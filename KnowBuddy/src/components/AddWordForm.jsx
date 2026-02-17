@@ -35,6 +35,9 @@ function AddWordForm({ onAddWord }) {
     setError("");
   };
 
+  console.log("AddWordForm loaded ✅", notice);
+
+  
   return (
     <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
 
