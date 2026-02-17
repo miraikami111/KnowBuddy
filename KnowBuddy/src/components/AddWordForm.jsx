@@ -35,8 +35,16 @@ function AddWordForm({ onAddWord }) {
     setError("");
   };
 
+  // return (
+  //   <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
+
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
+  <form
+    onSubmit={handleSubmit}
+    style={{ marginBottom: "20px", border: "3px solid red" }}
+  >
+    <p style={{ fontWeight: "bold" }}>AddWordForm is here ✅</p>
+      
       <div style={{ marginBottom: "10px" }}>
         <input
           type="text"
@@ -73,7 +81,7 @@ function AddWordForm({ onAddWord }) {
     style={{ width: "400px", height: "auto", marginTop: "12px" }}
     // className="notice-image"
     />
-
+      
       
       
 
@@ -81,7 +89,9 @@ function AddWordForm({ onAddWord }) {
         <div style={{ color: "red", marginTop: "8px", fontSize: "14px" }}>
           {error}
         </div>
+
       )}
+
     </form>
   );
 }
