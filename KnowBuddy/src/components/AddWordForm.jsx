@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import notice from "../assets/notice.png";
 
+
 function AddWordForm({ onAddWord }) {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
