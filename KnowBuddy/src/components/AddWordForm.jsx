@@ -70,8 +70,8 @@ function AddWordForm({ onAddWord }) {
     <img
     src={notice}
     alt="notice"
-    // style={{ width: "200px", height: "auto", marginTop: "12px" }}
-    className="notice-image"
+    style={{ width: "400px", height: "auto", marginTop: "12px" }}
+    // className="notice-image"
     />
 
       
