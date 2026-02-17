@@ -35,15 +35,10 @@ function AddWordForm({ onAddWord }) {
     setError("");
   };
 
-  // return (
-  //   <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-
   return (
-  <form
-    onSubmit={handleSubmit}
-    style={{ marginBottom: "20px", border: "3px solid red" }}
-  >
-    <p style={{ fontWeight: "bold" }}>AddWordForm is here ✅</p>
+    <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
+
+  
       
       <div style={{ marginBottom: "10px" }}>
         <input
@@ -76,11 +71,17 @@ function AddWordForm({ onAddWord }) {
       <button type="submit">Add Word</button>
       
     <img
-    src={notice}
-    alt="notice"
-    style={{ width: "400px", height: "auto", marginTop: "12px" }}
-    // className="notice-image"
-    />
+  src={notice}
+  alt="Flashcard guide"
+  style={{
+    width: "100%",
+    maxWidth: "400px",
+    height: "auto",
+    display: "block",
+    margin: "20px auto",
+  }}
+/>
+
       
       
       
