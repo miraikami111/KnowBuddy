@@ -37,7 +37,7 @@ function AddWordForm({ onAddWord }) {
 
   console.log("AddWordForm loaded ✅", notice);
 
-  
+
   return (
     <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
 
@@ -70,10 +70,13 @@ function AddWordForm({ onAddWord }) {
           }}
         />
       </div>
+          <button type="submit">Add Word</button>
 
-      <button type="submit">Add Word</button>
-      
-    <img
+<p style={{ marginTop: "12px", fontSize: "12px", color: "#666" }}>
+  DEBUG AddWordForm ✅ / notice = {String(notice)}
+</p>
+
+<img
   src={notice}
   alt="Flashcard guide"
   style={{
@@ -81,9 +84,11 @@ function AddWordForm({ onAddWord }) {
     maxWidth: "400px",
     height: "auto",
     display: "block",
-    margin: "20px auto",
+    margin: "10px auto 20px",
+    border: "2px solid red",
   }}
 />
+     
 
       
       
