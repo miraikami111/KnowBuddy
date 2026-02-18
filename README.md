@@ -1,16 +1,45 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+# KnowBuddy 🧠📚
+カスタマイズできる単語帳アプリ（PWA対応）
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🔗 URL
+https://knowbuddy.vercel.app
 
-## Expanding the ESLint configuration
+## 🧩 Features
+- 機能はできるだけシンプルに
+- 単語帳（トピック）の追加・削除
+- 追加したトピックを本棚（リスト）で管理
+- トピックごとに単語（Question / Answer）の追加・削除
+- 単語一覧表示
+- FlashCard に追加（ON / OFF）
+- FlashCard をクリックすると Answer 表示
+- 前へ / 次へ移動ボタン
+- 警告表示（ポップアップ）
+- ローカルストレージ保存（デバイスごとに保存）
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎯 Purpose
+通勤中の学習時間（電車の中の30分）を使って勉強しています。  
+動画や本で学ぶことが多いので、帰りの時間に「朝の復習」ができる仕組みが欲しくなり、単語帳アプリを作りました。  
+無料で、オフラインでも使えるアプリにしたかったため、PWA対応にしました。
+
+## 🛠 Tech Stack
+- **JavaScript / HTML / CSS**
+- **React**
+- **Vite**
+- **PWA (vite-plugin-pwa)**
+- **Vercel**（デプロイ）
+- **GitHub**（バージョン管理）
+
+## 💾 Data Storage
+- localStorage（ブラウザに保存）
+  - ※保存はデバイスごとに別になります
+
+## 🚀 Getting Started
+```bash
+git clone https://github.com/miraikami111/KnowBuddy.git
+cd KnowBuddy
+npm install
+npm run dev
