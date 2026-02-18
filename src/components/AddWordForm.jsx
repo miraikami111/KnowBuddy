@@ -35,7 +35,7 @@ function AddWordForm({ onAddWord }) {
     setError("");
   };
 
-  console.log("AddWordForm loaded ✅", notice);
+ 
 
 
   return (
