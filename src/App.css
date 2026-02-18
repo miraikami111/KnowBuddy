@@ -60,7 +60,7 @@ button.delete-button {
 /* notice 画像 */
 .notice{
   width: 100%;
-  max-width: 400px;
+  max-width: 460px;
   height: auto;
   display: block;
   margin: 10px auto 20px;

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import WordCard from "./WordCard";
 import AddWordForm from "./AddWordForm";
 import "./NotebookDetail.css";
+import Light01 from "../assets/Light01.png";
+
 
 function NotebookDetail({ notebook, onBack, onAddWord, onDeleteWord, onStartQuiz }) {
   if (!notebook) {
@@ -37,7 +39,19 @@ function NotebookDetail({ notebook, onBack, onAddWord, onDeleteWord, onStartQuiz
 
   return (
     <div className="notebook-detail">
+  {/* ライトのイラスト追加 */}
+       <img
+      src={Light01}
+      alt="icon"
+      className="corner-icon"
+    />
+
       <h2>{notebook.title}</h2>
+
+
+
+  
+
 
       <div className="notebook-buttons">
         <button onClick={onBack} className="action-button">Back</button>

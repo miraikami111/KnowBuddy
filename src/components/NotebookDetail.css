@@ -72,6 +72,14 @@ button.flashcard {
   color: #222;
   
 }
-
-
-
+.notebook-detail {
+  position: relative;  
+}
+.corner-icon {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+}

@@ -12,6 +12,11 @@ function AddNotebook({ onAdd }) {
     //空欄なら何もしない
     if (title.trim() === '') return;
 
+    // 文字数オーバーなら警告
+    if (title.length > 10) {
+    alert("タイトルは10文字以内にしてください");
+    return;
+  }
     // 親(App.jsx)に新しいノートのタイトルを渡す
     onAdd(title);
 
@@ -26,6 +31,7 @@ function AddNotebook({ onAdd }) {
         type="text"
         placeholder="Please enter a title of this note ☞"
         value={title}                     // ← 入力欄の中身
+         maxLength={10}   // ← 文字数を10文字までに制限
         onChange={(e) => setTitle(e.target.value)}  // ← 入力が変わったら更新
       />
 
