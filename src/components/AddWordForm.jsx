@@ -1,26 +1,26 @@
 import React, { useState } from "react";
+import notice from "../assets/notice.png";
+
 
 function AddWordForm({ onAddWord }) {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState("");
 
-  const maxLength = 50; // 最大文字数
+  const maxLength = 50;
 
-  // 文字数に応じてフォントサイズを計算
   const getFontSize = (text) => {
     const length = text.length;
-    if (length === 0) return 16; // 空の場合のサイズ
-    if (length <= 10) return 24; // 10文字以下は大きく
+    if (length === 0) return 16;
+    if (length <= 10) return 24;
     if (length <= 20) return 20;
     if (length <= 35) return 18;
-    return 16; // 35文字以上は小さめ
+    return 16;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // 文字数チェック
     if (question.length > maxLength || answer.length > maxLength) {
       setError(`Question と Answer は ${maxLength} 文字以内にしてください`);
       return;
@@ -30,21 +30,26 @@ function AddWordForm({ onAddWord }) {
 
     onAddWord(question, answer);
 
-    // リセット
     setQuestion("");
     setAnswer("");
     setError("");
   };
 
+  console.log("AddWordForm loaded ✅", notice);
+
+
   return (
     <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
+
+  
+      
       <div style={{ marginBottom: "10px" }}>
         <input
           type="text"
           placeholder="Question"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          maxLength={maxLength} // HTML の maxlength 属性でも制限可能
+          maxLength={maxLength}
           style={{
             marginRight: "10px",
             fontSize: `${getFontSize(question)}px`,
@@ -65,14 +70,37 @@ function AddWordForm({ onAddWord }) {
           }}
         />
       </div>
+          <button type="submit">Add Word</button>
 
-      <button type="submit">Add Word</button>
+<p style={{ marginTop: "12px", fontSize: "12px", color: "#666" }}>
+  DEBUG AddWordForm ✅ / notice = {String(notice)}
+</p>
+
+<img
+  src={notice}
+  alt="Flashcard guide"
+  style={{
+    width: "100%",
+    maxWidth: "400px",
+    height: "auto",
+    display: "block",
+    margin: "10px auto 20px",
+    border: "2px solid red",
+  }}
+/>
+     
+
+      
+      
+      
 
       {error && (
         <div style={{ color: "red", marginTop: "8px", fontSize: "14px" }}>
           {error}
         </div>
+
       )}
+
     </form>
   );
 }
