@@ -72,22 +72,11 @@ function AddWordForm({ onAddWord }) {
       </div>
           <button type="submit">Add Word</button>
 
-<p style={{ marginTop: "12px", fontSize: "12px", color: "#666" }}>
-  DEBUG AddWordForm ✅ / notice = {String(notice)}
-</p>
-
-<img
-  src={notice}
-  alt="Flashcard guide"
-  style={{
-    width: "100%",
-    maxWidth: "400px",
-    height: "auto",
-    display: "block",
-    margin: "10px auto 20px",
-    border: "2px solid red",
-  }}
-/>
+        <img
+        src={notice}
+        alt="Flashcard guide"
+        className="notice"
+      />
      
 
       
