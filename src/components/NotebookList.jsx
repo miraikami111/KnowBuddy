@@ -3,7 +3,7 @@ import React from "react";
 function NotebookList({ notebooks, onDelete, onSelect }) {
   return (
     <div>
-      <h2 className="handwriting">My Topics</h2>
+      <h2 className="handwriting">---- My Topics✍️----</h2>
 
       <ul>
         {notebooks.map((note) => (
