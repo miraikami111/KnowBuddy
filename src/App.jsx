@@ -124,6 +124,6 @@ function App() {
       </div>
     </div>
   );
-} // ← ここが必要！
+} 
 
 export default App;

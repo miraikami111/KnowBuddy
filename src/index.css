@@ -58,10 +58,12 @@ h1 {
   line-height: 1.1;
   /* 見出し用に行間を詰める */
 }
+
 .handwriting {
   font-family: "Indie Flower", cursive;
+  font-weight: 400;
 }
-/* 手書き風フォント */
+
 
 
 button {
