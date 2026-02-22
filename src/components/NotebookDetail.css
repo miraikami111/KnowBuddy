@@ -83,3 +83,18 @@ button.flashcard {
   height: 105px;
   object-fit: cover;
 }
+.handwriting2 {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* スマホではさらに読みやすく調整 */
+@media (max-width: 600px) {
+  .handwriting2 {
+    font-size: 24px;
+    letter-spacing: 0.2px;
+  }
+}

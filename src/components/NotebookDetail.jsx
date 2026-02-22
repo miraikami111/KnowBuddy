@@ -46,7 +46,7 @@ function NotebookDetail({ notebook, onBack, onAddWord, onDeleteWord, onStartQuiz
       className="corner-icon"
     />
 
-      <h2 className="handwriting">{notebook.title}</h2>
+      <h2 className="handwriting2">{notebook.title}</h2>
 
 
 
