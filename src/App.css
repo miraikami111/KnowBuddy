@@ -98,7 +98,7 @@ button.delete-button {
     font-size:16px;
 
     top:60px;   /* ← タイトルと被らない位置に調整 */
-    right:15px;
+    right:10px;
   }
 }
 ポイント
