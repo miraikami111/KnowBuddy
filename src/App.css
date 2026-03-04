@@ -96,8 +96,12 @@ button.delete-button {
     height:34px;
     line-height:34px;
     font-size:16px;
+
+    top:45px;   /* ← タイトルと被らない位置に調整 */
+    right:12px;
   }
 }
+ポイント
 .app-shell{
   position: relative;
 }
