@@ -61,7 +61,7 @@ function NotebookDetail({ notebook, onBack, onAddWord, onDeleteWord, onStartQuiz
           onClick={() => onStartQuiz(flushCardWords)}
          
         >
-          Flashcard🚀
+          Flashcards🚀
         </button>
       </div>
 

@@ -10,8 +10,13 @@ function Intro({ onClose }) {
         <ol>
           <li>Enter a title in the input box</li>
           <li>Click "Add My note"</li>
-          <li>Your topic will appear in "My Topics"(You can delete it anytime)</li>
-          <li></li>
+          <li>Your topic will appear in "My Topics"<br />(You can delete it anytime)</li>
+          <li>Click a topic to open it</li>
+          <li>Enter question and answer</li>
+          <li>Turn 📖ON to add it to flashcards</li>
+          <li>Turn 📘OFF to remove it</li>
+          <li>Click "Flashcards 🚀" to start the quiz</li>
+
 
         </ol>
 
