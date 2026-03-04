@@ -5,6 +5,7 @@ import NotebookDetail from "./components/NotebookDetail";
 import Quiz from "./components/Quiz";
 import SplashScreen from "./components/SplashScreen";
 import Tokage01 from "./assets/Tokage01.png"; 
+import Intro from "./components/Intro";
 
 
 
@@ -18,6 +19,9 @@ function App() {
   // クイズ管理
   const [showQuiz, setShowQuiz] = useState(false);
   const [quizWords, setQuizWords] = useState([]);
+
+  // イントロ管理
+  const [showIntro, setShowIntro] = useState(false);
 
   // localStorage読み込み
   useEffect(() => {
@@ -105,7 +109,18 @@ function App() {
 
   return (
     <div className="app-shell">
+
       <div className="app-card">
+
+      {/* イントロbuttonの追加 */}
+      <button
+    className="help-btn"
+    onClick={() => setShowIntro(prev => !prev)}
+  >?</button>
+
+
+
+      {/* 大見出し（アプリ名） */}
         <h1 className="marumoji">KnowBuddy</h1>
 
          <img
@@ -121,6 +136,7 @@ function App() {
           onDelete={handleDeleteNotebook}
           onSelect={(id) => setSelectedNotebook(id)}
         />
+       {showIntro && <Intro onClose={() => setShowIntro(false)} />}
       </div>
     </div>
   );
