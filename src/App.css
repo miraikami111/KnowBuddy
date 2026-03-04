@@ -97,7 +97,7 @@ button.delete-button {
     line-height:34px;
     font-size:16px;
 
-    top:55px;   /* ← タイトルと被らない位置に調整 */
+    top:60px;   /* ← タイトルと被らない位置に調整 */
     right:15px;
   }
 }
